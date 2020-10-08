@@ -1,0 +1,34 @@
+
+/* Pages */
+
+.pages {
+  float: right;
+  width: 810px;
+  height: 110px;
+  background: url(./../../images/img2.jpg);
+  border: 1px solid #939A3C;
+}
+
+.pages h2 {
+  display: none;
+}
+
+.pages ul {
+  margin: 0;
+  padding: 20px 0 0 0;
+  list-style: none;
+  line-height: normal;
+}
+.pages li {
+  display: inline;
+}
+.pages a {
+  padding-left: 2em;
+  text-decoration: none;
+  font: 3.0em Tahoma, sans-serif;
+  color: #FFFFFF;
+}
+
+.pages a:hover {
+  color: #ccc;
+}

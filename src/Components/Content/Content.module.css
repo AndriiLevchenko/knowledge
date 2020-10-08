@@ -1,0 +1,37 @@
+#content {
+  clear: both;
+  padding-top: 10px;
+}
+
+/* Posts */
+
+.posts {
+  float: right;
+  width: 412px;
+}
+
+.post {
+  padding-top: 10px;
+}
+
+.post .title {
+  margin: 0;
+  font-size: 3em;
+}
+
+.post .posted {
+  margin-top: 0;
+  font: normal .8em Tahoma, Arial, Helvetica, sans-serif;
+  color: #999999;
+}
+
+.post .meta {
+  margin: 2em 0 3em 0;
+  border-top: 1px dotted #939A3C;
+  font: normal .8em Tahoma, Arial, Helvetica, sans-serif;
+  color: #999999;
+}
+
+.post .meta p {
+  margin: 0;
+}

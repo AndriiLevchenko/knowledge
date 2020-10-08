@@ -1,0 +1,47 @@
+/*.FinishedQuiz {
+	margin: 0 auto; 
+	position: relative; 
+	max-width: 90%;
+	 background-color: #f3ffcf;
+}
+.FinishedQuiz ul {
+	margin: 0 auto;
+	max-width: 90%;
+	display: inline-block;
+}
+.FinishedQuiz ul li {
+	margin: 20px;
+	text-align: left;
+	list-style-type: none;
+	
+}
+
+.success{
+  color: rgba(161, 240, 69, .7); 
+}
+.error{
+  color: rgba(240, 87, 108, .7); 
+}
+
+
+
+.AnswersList{
+  list-style-type: none;
+ 
+  padding: 10px;
+  background-color: #f3ffcf;
+}
+
+.FinishedQuiz .AnswerItem{
+  position:relative;
+  width: 95%;
+  height: 22px;
+  background-color: #e0f2f7;
+  border: 1px solid cyan;
+  border-radius: 8px;
+  margin: 6px;
+  padding: 4px; 
+  color: black;
+  cursor: pointer;
+ }
+*/

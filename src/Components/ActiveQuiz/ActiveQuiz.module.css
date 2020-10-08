@@ -1,0 +1,41 @@
+.ActiveQuiz {
+/*  display: flex;
+  justify-content: center;*/
+  flex-grow: 1;
+  width: 95%;
+  padding: 20px;
+  color: #fff;
+  border: 2px solid #fff;
+ 
+  margin: 10px;
+  box-sizing: border-box;
+  flex-direction: column;
+  text-align: center;
+ 
+}
+.Questions{
+  font-size: 18px;
+  width: 77%;
+  margin: 6px auto;
+  padding: 6px;
+  background-color: #eee;
+  border-radius: 6px;
+}
+.Questions h4{
+  display: flex;
+  justify-content: space-between;
+  font-size: 17px;
+  margin: 2px 2px 2px 11px;
+  color: black;
+}
+.Counter{
+	display: flex;
+	justify-content: space-between;
+}
+.Counter small{
+  padding-left: 26px;
+  white-space: nowrap
+}
+
+
+

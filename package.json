@@ -1,34 +1,39 @@
 {
-  "name": "knowledge",
+  "name": "ukrmystetstvo-redux",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
+    "@firebase/storage": "^0.3.22",
+    "@react-firebase/auth": "^0.2.9",
+    "axios": "^0.18.0",
+    "css-loader": "^3.2.0",
+    "firebase": "^5.9.3",
+    "googleapis": "^51.0.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-quill": "^1.3.3",
+    "react-redux": "^5.1.1",
+    "react-redux-firebase": "^3.0.5",
+    "react-render-html": "^0.6.0",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "^3.3.0",
+    "react-with-firebase-auth": "^1.0.2",
+    "redux": "^4.0.4",
+    "redux-form": "^8.3.6",
+    "redux-thunk": "^2.3.0",
+    "style-loader": "^1.0.0"
   },
+  "devDependencies": {},
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

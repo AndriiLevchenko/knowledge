@@ -1,0 +1,30 @@
+
+
+.Select{
+	margin-bottom: 15px;
+	
+}
+.Select label{
+	margin: 0 0 2px 0;
+	padding: 0;
+	font-weight: bold;
+	display: block;
+}
+.Select select{
+	display: block;
+	box-sizing: border-box;
+	margin: 0 0 5px;
+	height: 32px;
+	width: 100%;
+	outline: none;
+	transition: all 0.3s ease-in-out;
+	background-color: #e0f2f7;
+	border: 1px solid cyan;
+	border-radius: 8px;
+}
+.Select select:hover{
+  	background-color: #bde0ff;
+}
+
+
+
