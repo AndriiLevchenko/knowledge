@@ -13,7 +13,7 @@ import QuizList from './QuizList/QuizList';
 //import './App.css';
 //import Navigation from './Components/Navigation/Navigation';
 import Content from './Content/Content';
-
+//import Rate from './Rate/Rate';
 import Ratings from './Ratings/Ratings';
 import Auth from './Auth/Auth';
 
@@ -24,9 +24,10 @@ const Home=()=>{
 
           <div className="wrapper">  
               <div className="home">
+               <Auth />
                   <Content />
                   <QuizList />
-                  <Auth />
+                 
                   <Ratings />
               </div>
               <div className="footer">

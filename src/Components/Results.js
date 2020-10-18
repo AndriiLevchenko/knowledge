@@ -6,8 +6,9 @@ import  './../App.css';
 import Quiz from './Quiz/Quiz';
 //import QuizCreator from './Components/QuizCreator/QuizCreator';
 import QuizList from './QuizList/QuizList';
+import QuizListForRating from './QuizList/QuizListForRating';
 //import {Route, Switch, Redirect, withRouter} from 'react-router-dom';
-
+import {NavLink, withRouter} from "react-router-dom";
 //import {autoLogin} from './redux/reducers/authReducer';
 
 //import './App.css';
@@ -16,21 +17,80 @@ import Content from './Content/Content';
 
 import Ratings from './Ratings/Ratings';
 import Auth from './Auth/Auth';
+import Loader from './../UI/Loader/Loader';
+import {connect} from 'react-redux';
+import {fetchRating} from './../redux/reducers/quizReducer';
+import Rate from "./Rate/Rate";
 
-const Results=()=>{
+
+class Results extends Component{
+		// renderRating(){
+  //         return this.props.rating.map((rate, index)=>{
+  //           console.log("rate=", rate, "index=", index, "rate.id = ", rate.id);
+  //           return(
+  //               <li
+  //                 key={rate.id}
+  //               >
+  //                 <NavLink to={'/results/' + rate.id }>
+  //                   {rate.name + " " + rate.surname + " школа " + rate.schoolnumber}
+  //                 </NavLink>
+  //               </li>
+  //           )
+  //         })    
+  //     }
+
+        componentDidMount(){
+          this.props.fetchRating();
+       //     axios.get("https://abzagencytest.firebaseio.com/quizes.json").then(response=>{
+       //       console.log("response = ", response);
+       //     })
+        }
+
+    render(){
+    console.log(this.props.rating);
+    const pageName=(document.URL).toString();
+    let cls = pageName.indexOf('results') != -1 ? "boxed" : "boxed2"; //RATING block is located either left(class boxed2) or roght (class boxed)
+  
+  
+
+    						// return
+		    				// 		<div className={cls} >
+						    //     <h2 className="heading">ТОП 10 знавців</h2>
+						    //     { this.props.loading && this.props.rating.length !== 0
+						    //         ? 	<Loader />
+						    //         : 	<div className="content" >
+						    //                 <ul>
+						    //                     {this.renderRating()}
+						    //                 </ul>
+						    //             </div>
+						    //     }
+						    // </div>
+
+
   return (
-    
-
-
-          <div className="wrapper">  
-              <div className="results">
-                 
-                  <QuizList />
-                  <Ratings />
-              </div>
-             
-          </div>
+        <div className="wrapper">  
+            <div className="results">   
+                 	<QuizListForRating />
+                  
+              
+            </div>
+        </div>
   )
 }
+}
 
-export default Results;
+function mapStateToProps(state){
+  return{
+    rating: state.quizReducer.rating,
+    loading: state.quizReducer.loading,
+    rate: state.quizReducer.rate
+  }
+}
+function mapDispatchToProps(dispatch){
+  return{
+    fetchRating: ()=>dispatch(fetchRating())
+  }
+}
+
+//let withUrlResults = withRouter(Results);
+export default connect(mapStateToProps, mapDispatchToProps)(Results);

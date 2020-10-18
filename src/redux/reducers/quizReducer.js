@@ -4,22 +4,26 @@ import axios from  './../../axios/axios-quiz';
 
 const FETCH_QUIZES_START='FETCH_QUIZES_START';
 const FETCH_QUIZES_SUCCESS='FETCH_QUIZES_SUCCESS';
+const FETCH_RATING_SUCCESS='FETCH_RATING_SUCCESS';
 const FETCH_QUIZES_ERROR='FETCH_QUIZES_ERROR';
 const FETCH_QUIZ_SUCCESS='FETCH_QUIZ_SUCCESS';
 const QUIZ_SET_STATE='QUIZ_SET_STATE';
 const FINISH_QUIZ='FINISH_QUIZ';
 const QUIZ_NEXT_QUESTION='QUIZ_NEXT_QUESTION';
 const RETRY_QUIZ='RETRY_QUIZ';
+const FETCH_RATE_SUCCESS="FETCH_RATE_SUCCESS";
 
 const initialState={
 	quizes: [], 
+	rating: [],
 	loading: false,
 	error: null,
 	results: {},			//   { [id]: 'success'    'error' }
 	isFinished: false,
 	activeQuestion: 0,
 	answerState: null,  	//   { [id]: 'success'    'error' }
-	quiz: null
+	quiz: null, 
+	quizRate: "-MIuG3W-EVl_cpW1cWim"
 };
 
 export default function  quizReducer(state=initialState, action){
@@ -35,11 +39,23 @@ export default function  quizReducer(state=initialState, action){
 				loading: false,
 				quizes: action.quizes
 			}
+		case FETCH_RATING_SUCCESS:
+			return {
+				...state,
+				loading: false,
+				rating: action.rating
+			}
 		case FETCH_QUIZ_SUCCESS:
 			return {
 				...state,
 				loading: false,
 				quiz: action.quiz
+			}
+		case FETCH_RATE_SUCCESS:
+			return {
+				...state,
+				loading: false,
+				quizRate: action.quizRate
 			}
 		case FETCH_QUIZES_ERROR:
 			return {
@@ -158,12 +174,42 @@ export function fetchQuizes(){
 	  			const quizes=[];
 	  			Object.keys(response.data).forEach((key, index)=>{
 	  				quizes.push({
+	  					quizNumber: index,
 	  					id: key,
-	  					name: `Тест № ${index + 1}`
 	  				})
+	  			});
+	  			Object.values(response.data).forEach((value, index)=>{
+	  				quizes[index].quizName = value[0].quizName
 	  			});
 	  			
 	  	dispatch(fetchQuizesSuccess(quizes));
+	  		} catch(error) {
+	  			dispatch(fetchQuizesError(error));
+	  		}
+	}
+}
+export function fetchRating(){
+	return async dispatch=>{
+		dispatch(fetchQuizesStart());
+			try{
+	  			const response = await axios.get('rating.json'); 
+	  			console.log(response.data);
+	  			const rating=[];
+	  			Object.values(response.data).forEach((value, index)=>{
+	  				console.log("key = ", value.email);
+	  				console.log("index = ", index);
+	  				
+	  				rating.push({
+	  					id: index,
+	  					quizRate: value.quizName,
+	  					surname: value.surname,
+	  					email: value.email,
+	  					schoolnumber: value.schoolnumber,
+	  					quizResults: value.quizResults
+	  				})
+	  			});
+	  			//console.log(response.data.rating[0]);
+	  	dispatch(fetchRatingSuccess(rating));
 	  		} catch(error) {
 	  			dispatch(fetchQuizesError(error));
 	  		}
@@ -184,6 +230,36 @@ export function fetchQuizById(quizId){
 	  		}
 	}
 }
+export function fetchRateById(rateId){
+	console.log(rateId);
+	return async dispatch=>{
+		dispatch(fetchQuizesStart());
+			try{
+	  			const response = await axios.get(`quizes/${rateId}.json`); 
+	  			const rate=response.data;
+	  			console.log(response.data);
+	  			
+	  	dispatch(fetchRateSuccess(rate));
+	  		} catch(error) {
+	  			dispatch(fetchQuizesError(error));
+	  		}
+	}
+}
+export function fetchRateForQuiz(quizId){
+	console.log(quizId);
+	return async dispatch=>{
+		dispatch(fetchQuizesStart());
+			try{
+	  			const response = await axios.get(`rating/${quizId}.json`); 
+	  			const rate=response.data;
+	  			console.log(response.data);
+	  			
+	  	dispatch(fetchRateSuccess(rate));
+	  		} catch(error) {
+	  			dispatch(fetchQuizesError(error));
+	  		}
+	}
+}
 
 export function fetchQuizesStart(){
 	return {type: FETCH_QUIZES_START}
@@ -193,10 +269,21 @@ export function fetchQuizesSuccess(quizes){
 			quizes
 		   }
 }
+export function fetchRatingSuccess(rating){
+	return {type: FETCH_RATING_SUCCESS,
+			rating
+		   }
+}
 export function fetchQuizSuccess(quiz){
 	console.log(quiz);
 	return {type: FETCH_QUIZ_SUCCESS,
 			quiz
+		   }
+}
+export function fetchRateSuccess(rate){
+	console.log(rate);
+	return {type: FETCH_QUIZ_SUCCESS,
+			rate
 		   }
 }
 export function fetchQuizesError(error){

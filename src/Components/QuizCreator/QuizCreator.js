@@ -53,7 +53,7 @@ class QuizCreator extends Component{
 		control.touched=true;
 		control.value=value;
 		control.valid=validate(control.value, control.validation);
-		console.log('valid = ', control.valid);
+		//console.log('valid = ', control.valid);
 		formControls[controlName]=control;
 		//console.log(formControls[controlName], validateForm(formControls));
 		this.setState({
@@ -96,7 +96,7 @@ class QuizCreator extends Component{
 		
 		return Object.keys(this.state.formControls).map((controlName, index)=>{
 			const control=this.state.formControls[controlName];
-			console.log('control.valid = ', control.valid)
+			//console.log('control.valid = ', control.valid)
 			return( 
 				<Auxiliary key={controlName + index} >
 					<Input 

@@ -4,6 +4,7 @@ import React, {Component} from 'react';
 import Layout from './Components/Layout/Layout';
 import LogOut from './Components/Auth/LogOut';
 import Quiz from './Components/Quiz/Quiz';
+import Rate from './Components/Rate/Rate';
 import QuizCreator from './Components/QuizCreator/QuizCreator';
 import Tests from './Components/Tests';
 import {Route, Switch, Redirect, withRouter} from 'react-router-dom';
@@ -16,20 +17,23 @@ import Content from './Components/Content/Content';
 import Home from './Components/Home';
 import Results from './Components/Results';
 import Auth from './Components/Auth/Auth';
+import SignUp from './Components/Auth/SignUp';
 
 class App extends Component{
 
 
-  state={
-    isLoggedIn: false
-  }
+      componentDidMount(){
+        this.props.autoLogin();
+      }
 
   render(){
+
   let routes=(
         <Switch>
             <Route path='/tests' component={Tests} />
             <Route path='/results' component={Results} />
             <Route path='/auth' component={Auth} />
+            <Route path='/signup' component={SignUp} />
             <Route path='/quiz/:id' component={Quiz} />
             <Route path='/' exact component={Home} />
             <Redirect to='/' />
@@ -39,9 +43,11 @@ class App extends Component{
         routes=(
         <Switch>
             <Route path='/tests' component={Tests} />
-            <Route path='/results' component={Results} />
-            <Route path='/quiz-creator' component={QuizCreator} />
+           
+           <Route path='/results/rate/:id'	   component= {Results }/>
+            <Route path='/quizcreator' component={QuizCreator} />
             <Route path='/quiz/:id' component={Quiz} />
+        <Route path='/results' component={Results} />		
             <Route path='/logout' component={LogOut} />
             <Route path='/' exact component={Home} />
             <Redirect to='/' />
@@ -71,16 +77,14 @@ class App extends Component{
 
       
               </div>
-              <div style={{border: "2px solid green"}}>
-                <h3> isLoggedIn = {this.state.isLoggedIn ? "TRUE" : "FALSE"} </h3>   
-                <button onClick={()=>this.setState({isLoggedIn: true})} > LOG IN </button>
-              </div>
+              
       </div>
   )
   }
 }
 
 function mapStateToProps(state){
+    console.log( state);
   return{
     isAuthenticated: !!state.authReducer.token
   }

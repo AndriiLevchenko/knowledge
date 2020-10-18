@@ -39,6 +39,7 @@
   padding: 9px 0;
   border-top: 1px dotted #939A3C;
   font-size: 1.2em;
+  text-align: left;
 }
 
 .boxed li.first {
@@ -49,6 +50,7 @@
   padding-left: 10px;
   background: url(./../../images/img4.gif) no-repeat left center;
   text-decoration: none;
+    text-align: left;
 }
 
 /* Archives */

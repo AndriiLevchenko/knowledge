@@ -25,10 +25,10 @@ h1, h2, h3 {
   font-weight: normal;
   color: #BD4F21;
 }
-
+/*
 p, blockquote, ol, ul {
-  line-height: 160%;
-}
+  line-height: 100%;
+}*/
 /*
 a {
   color: #7C8634;
@@ -41,46 +41,60 @@ a:hover {
 
 /* Boxed   */ 
 
-.boxed {
-  width: 198px;
+.boxed{
+ 
   margin: 0 0 10px 0;
   padding: 0;
   background: #E0E3C9;
   border: 1px solid #939A3C;
 }
+.boxed2 {
+  width: 198px;
+  float: left;
+  margin: 0 0 10px 0;
+  padding: 0;
+  background: #E0E3C9;
+  border: 1px solid #939A3C;
+}
+.clearfix{
+  clear: both;
+}
 
-.boxed .heading {
+.boxed .heading, .boxed2 .heading {
   margin: 4px;
   padding: 9px 10px;
  background: #5FD3BE url(images/img3.gif) no-repeat center bottom;
-  border-top: 1px solid #737947;
+  border-top: 2px solid #737947;
   border-bottom: 1px solid #F4F5EC;
   font: bold 1em Tahoma, Arial, Helvetica, sans-serif;
   color: #FFFFFF;
 }
+.boxed .heading{
+  background: #5FD3BE url(images/img32.gif) no-repeat center bottom;
+}
 
-.boxed .content {
+.boxed .content, .boxed2 .content {
   margin: 0;
   padding: 5px 14px 10px 14px;
 }
 
-.boxed ul {
+.boxed ul, .boxed2 ul {
   margin: 0;
   padding: 0;
   list-style: none;
   line-height: normal;
 }
 
-.boxed li {
+.boxed li, .boxed2 li {
   padding: 3px 0;
   border-top: 1px dotted #939A3C;
 }
 
-.boxed li.first {
+.boxed li.first, .boxed2 li.first {
   border: none;
 }
 /*
-.boxed a {
+.boxed, .boxed2 a {
   padding-left: 10px;
   background: url(images/img4.gif) no-repeat left center;
   text-decoration: none;
@@ -170,7 +184,7 @@ a:hover {
 
 /* Archives */
 
-.home .archives {
+.home .boxed {
   width: 388px;
   float: right;
   margin-right: 10px;
@@ -179,7 +193,7 @@ a:hover {
     border: 1px solid #939A3C;
 }
 
-.results .archives {
+.results .boxed {
   width: 800px;
     float: right;
   margin-right: 10px;
@@ -188,7 +202,7 @@ a:hover {
     border: 1px solid #939A3C;
 }
 
-.tests .archives {
+.tests .boxed {
   width: 980px;
   margin: 0 auto;
  
@@ -219,7 +233,7 @@ a:hover {
 }
 
 .post .meta {
-  margin: 2em 0 3em 0;
+  margin: 2em 0 1em 0;
   border-top: 1px dotted #939A3C;
   font: normal .8em Tahoma, Arial, Helvetica, sans-serif;
   color: #999999;

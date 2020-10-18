@@ -8,10 +8,10 @@ function isInvalid ({valid, touched, shouldValidate}){
 	return !valid && shouldValidate && touched
 }
 const Input =(props)=>{
-	console.log(props.valid, props.touched, props.shouldValidate);
-	console.log(props.type);
+	//console.log(props.valid, props.touched, props.shouldValidate);
+	
 	const inputType= props.type || 'text';
-		console.log(inputType);
+	
 	const cls=[classes.Input];
 	const htmlFor=`${inputType}-${Math.random()}`;
 		//console.log('props.valid = ', props.valid, props.touched, props.shouldValidate);

@@ -6,13 +6,13 @@ import classes from './Auth.module.css';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import { logOut}  from './../../redux/reducers/authReducer';
+import { logOutUser}  from './../../redux/reducers/authReducer';
 
 
 
   class LogOut extends Component {
       componentDidMount(){
-          this.props.logOut();
+          this.props.logOutUser();
       }
 
       render(){
@@ -23,7 +23,7 @@ import { logOut}  from './../../redux/reducers/authReducer';
 
   function mapDispatchToProps(dispatch){
     return{
-      logOut: ()=>dispatch(logOut())
+      logOutUser: ()=>dispatch(logOutUser())
     }
   }
 

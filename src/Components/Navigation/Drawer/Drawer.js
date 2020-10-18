@@ -26,8 +26,10 @@ class Drawer extends Component {
           })
         }
     render(){
+      //console.log("isAuthenticated = ", this.props);
        const llinks=[
-        {to:'/', label:'Тести', exact:true}
+        {to:'/', label:'Тести', exact:true},
+        {to:'/results', label:"Результати", exact: false}
       ];
       if(this.props.isAuthenticated){
           llinks.push( {to:'/quizcreator', label:'Створи тест', exact:false});

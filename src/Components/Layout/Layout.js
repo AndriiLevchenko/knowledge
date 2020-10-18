@@ -22,16 +22,18 @@ class Layout extends Component {
 
 
   render(){
-    console.log(this.props.children);
+    //console.log(this.props.children);
     return (
       <div >
         <MenuToggle 
          onToggle={this.toggleMenuHandler}
          isMenuOpen={this.state.menu}
+        
         />
         <Drawer 
          isMenuOpen={this.state.menu}
           onClose={this.menuCloseHandler}
+           isAuthenticated={this.props.isAuthenticated}
         />
      
         <main >
@@ -49,5 +51,5 @@ function mapStateToProps(state){
   }
 }
 
-//export default connect(mapStateToProps)(Layout);
-export default Layout;
+export default connect(mapStateToProps)(Layout);
+//export default Layout;

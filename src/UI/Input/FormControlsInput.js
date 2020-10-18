@@ -5,8 +5,9 @@ const FormControlsInput=({input, meta, ...props} )=>{
 
 	const hasError=meta.touched && meta.error;
 	console.log(meta, props);
-	const htmlFor=`${inputType}-${Math.random()}`;
 	const inputType= props.type || 'text';
+	const htmlFor=`${inputType}-${Math.random()}`;
+	
 	return (
 		<div className={classes.formControl + ' ' + (hasError ? classes.error : ' ') }>
 			<div className={classes.formControl}>

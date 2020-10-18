@@ -7,6 +7,8 @@
 
 .boxed {
   width: 198px;
+  float: left;
+
   margin: 0 0 10px 0;
   padding: 0;
   background: #E0E3C9;
@@ -45,12 +47,22 @@
 
 .boxed a {
   padding-left: 10px;
-  background: url(./../../images/img4.gif) no-repeat left center;
   text-decoration: none;
+}
+.currentUser{
+  padding: 25px 0;
+  font-size: 1.5em;
 }
 
 
 /* Search */
+.content button{
+  height: 27px;
+}
+.content a{
+  padding-left: 0;
+  background: none;
+}
 
 #search .content {
   padding-bottom: 12px;

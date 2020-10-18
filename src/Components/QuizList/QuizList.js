@@ -12,12 +12,13 @@ class QuizList extends Component{
   
 		  	renderQuizes(){
 		  		return this.props.quizes.map(quiz=>{
+		  			console.log(quiz);
 		  			return(
 		  					<li
 		  						key={quiz.id}
 		  					>
 		  						<NavLink to={'/quiz/' + quiz.id }>
-		  							{quiz.name}
+		  							{quiz.quizName}
 		  						</NavLink>
 		  					</li>
 		  			)
@@ -32,10 +33,16 @@ class QuizList extends Component{
 		  	}
 
    	render(){
-		console.log(this.props)
+		console.log(this.props.quizes);
+		const pageName=(document.URL).toString();
+		let cls = pageName.indexOf('results') == 22 ? "boxed2" : "boxed";
+  
+  
+      console.log(pageName.indexOf('results'));
+      console.log("cls = ", cls);
 	    return (	      	
-	      		 <div className="archives boxed">
-					<h2 className="heading">Archives  Тести</h2>
+	      		 <div className={cls}>
+					<h2 className="heading">Тести</h2>
 					{ this.props.loading && this.props.quizes.length !== 0
 						? <Loader />
 						:	<div className="content" >
@@ -65,4 +72,4 @@ function mapDispatchToProps(dispatch){
 export default connect(mapStateToProps, mapDispatchToProps)(QuizList);
 
 
-    //export default withRouter(QuizList);
+    {/*//export default withRouter(QuizList);    */}
