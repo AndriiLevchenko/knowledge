@@ -44,10 +44,10 @@ class App extends Component{
         <Switch>
             <Route path='/tests' component={Tests} />
            
-           <Route path='/results/rate/:id'	   component= {Results }/>
+       
             <Route path='/quizcreator' component={QuizCreator} />
             <Route path='/quiz/:id' component={Quiz} />
-        <Route path='/results' component={Results} />		
+        <Route path='/results'  component={Results} />		
             <Route path='/logout' component={LogOut} />
             <Route path='/' exact component={Home} />
             <Redirect to='/' />

@@ -21,18 +21,18 @@ class Rate extends Component {
 	renderQuizes(){
 				let quizName=this.props.quizName;
 			
-		  		return this.props.rating.map(quiz=>{
+		  		return this.props.rating.map(rate=>{
 		  			
 		  			// console.log("quiz = ", quiz);
 		  			// console.log("quizResults = ", quiz.quizResults);
 		  			// console.log("quizName = ", quizName);
-		  			if(!!quiz.quizResults){
+		  			if(!!rate.quizResults){
 			  			return(
 			  					<li
-			  						key={quiz.id}
+			  						key={rate.id}
 			  					>
-			  						<NavLink to={'/quiz/' + quiz.id }>
-			  							{quiz.surname + " " + quiz.quizResults.quizName + "         школа " + quiz.schoolnumber }
+			  						<NavLink to={'/rate/' + rate.id }>
+			  							{rate.surname + " " + rate.quizResults.quizName + "   школа " + rate.schoolnumber  + "  RATING     " + this.props.quizForRating}
 			  						</NavLink>
 			  					</li>
 			  			)
@@ -41,10 +41,8 @@ class Rate extends Component {
 	}
 	
   render(){
-  	console.log(this.props, this.props.rate);
-  	console.log("this/props.rate = ", this.props.quizName);
-  	//const {pathname} = this.props.location;
-  	//console.log(pathname);
+  	console.log(this.props, this.props.quizForRating, this.props.quiz);
+  	console.log("this/props.rate = ", this.props.match.params.id);
   
     return (
    
@@ -69,6 +67,7 @@ class Rate extends Component {
 }
 
 function mapStateToProps(state){
+	console.log(state.quizReducer.quizForRating);
 	return{
 		results: state.quizReducer.results,		
 		isFinished: state.quizReducer.isFinished,
@@ -77,8 +76,9 @@ function mapStateToProps(state){
 		loading: state.quizReducer.loading,
 		quizName: state.quizReducer.quizRate,
 		rating: state.quizReducer.rating,
-		rate: state.quizReducer.rate
-		
+		rate: state.quizReducer.rate,
+		quiz: state.quizReducer.quiz,
+		quizForRating: state.quizReducer.quizForRating
 	}
 }
 function mapDispatchToProps(dispatch){

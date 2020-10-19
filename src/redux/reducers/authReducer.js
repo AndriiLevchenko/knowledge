@@ -96,7 +96,7 @@ export function auth(email, password, isLogin){
 			returnSecureToken: true
 		}
 
-		let url='https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBKs6rq7O9TkZTZ2Fvw_*';
+		let url='https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBKs6rq7O9TkZTZ2Fvw_UIHZ8R0AA2VCxM';
 		
 		const response = await axios.post(url, authData);
 		const data=response.data;
@@ -128,7 +128,7 @@ export function signUpUser (email, password, name, surname, schoolnumber, classn
 		const authData={
 			email, password, name, surname, schoolnumber, classnumber, testResults
 		}
-		let url='https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBKs6rq7O9TkZTZ2Fvw_*';
+		let url='https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBKs6rq7O9TkZTZ2Fvw_UIHZ8R0AA2VCxM';
 		//const userCredentials = await axios.post(url, authData);
 		const userCredentials = await fire.auth().createUserWithEmailAndPassword(email, password);
 		const response = await axios.post("https://abzagencytest.firebaseio.com/rating.json", authData);

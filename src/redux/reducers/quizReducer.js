@@ -12,6 +12,7 @@ const FINISH_QUIZ='FINISH_QUIZ';
 const QUIZ_NEXT_QUESTION='QUIZ_NEXT_QUESTION';
 const RETRY_QUIZ='RETRY_QUIZ';
 const FETCH_RATE_SUCCESS="FETCH_RATE_SUCCESS";
+const FETCH_QUIZ_FOR_RATING="FETCH_QUIZ_FOR_RATING";
 
 const initialState={
 	quizes: [], 
@@ -23,6 +24,7 @@ const initialState={
 	activeQuestion: 0,
 	answerState: null,  	//   { [id]: 'success'    'error' }
 	quiz: null, 
+	quizForRating: null,
 	quizRate: "-MIuG3W-EVl_cpW1cWim"
 };
 
@@ -50,6 +52,12 @@ export default function  quizReducer(state=initialState, action){
 				...state,
 				loading: false,
 				quiz: action.quiz
+			}
+		case FETCH_QUIZ_FOR_RATING:
+				console.log(action.quizForRating);
+			return {
+				...state,
+				quizForRating: action.quizForRating
 			}
 		case FETCH_RATE_SUCCESS:
 			return {
@@ -189,6 +197,7 @@ export function fetchQuizes(){
 	}
 }
 export function fetchRating(){
+	console.log("запустился fetchRating");
 	return async dispatch=>{
 		dispatch(fetchQuizesStart());
 			try{
@@ -231,7 +240,7 @@ export function fetchQuizById(quizId){
 	}
 }
 export function fetchRateById(rateId){
-	console.log(rateId);
+	console.log("fetchRateById = ", rateId);
 	return async dispatch=>{
 		dispatch(fetchQuizesStart());
 			try{
@@ -246,7 +255,7 @@ export function fetchRateById(rateId){
 	}
 }
 export function fetchRateForQuiz(quizId){
-	console.log(quizId);
+	console.log("fetchRateForQuiz = ", quizId);
 	return async dispatch=>{
 		dispatch(fetchQuizesStart());
 			try{
@@ -278,6 +287,12 @@ export function fetchQuizSuccess(quiz){
 	console.log(quiz);
 	return {type: FETCH_QUIZ_SUCCESS,
 			quiz
+		   }
+}
+export function fetchQuizForRating(quizForRating){
+	console.log(quizForRating);
+	return {type: FETCH_QUIZ_FOR_RATING,
+			quizForRating
 		   }
 }
 export function fetchRateSuccess(rate){

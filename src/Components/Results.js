@@ -9,17 +9,15 @@ import QuizList from './QuizList/QuizList';
 import QuizListForRating from './QuizList/QuizListForRating';
 //import {Route, Switch, Redirect, withRouter} from 'react-router-dom';
 import {NavLink, withRouter} from "react-router-dom";
-//import {autoLogin} from './redux/reducers/authReducer';
 
 //import './App.css';
-//import Navigation from './Components/Navigation/Navigation';
 import Content from './Content/Content';
 
 import Ratings from './Ratings/Ratings';
 import Auth from './Auth/Auth';
 import Loader from './../UI/Loader/Loader';
 import {connect} from 'react-redux';
-import {fetchRating} from './../redux/reducers/quizReducer';
+import {fetchRating, fetchQuizes} from './../redux/reducers/quizReducer';
 import Rate from "./Rate/Rate";
 
 
@@ -41,9 +39,9 @@ class Results extends Component{
 
         componentDidMount(){
           this.props.fetchRating();
-       //     axios.get("https://abzagencytest.firebaseio.com/quizes.json").then(response=>{
-       //       console.log("response = ", response);
-       //     })
+          this.props.fetchQuizes();
+
+      
         }
 
     render(){
@@ -71,8 +69,6 @@ class Results extends Component{
         <div className="wrapper">  
             <div className="results">   
                  	<QuizListForRating />
-                  
-              
             </div>
         </div>
   )
@@ -88,9 +84,9 @@ function mapStateToProps(state){
 }
 function mapDispatchToProps(dispatch){
   return{
-    fetchRating: ()=>dispatch(fetchRating())
+    fetchRating: ()=>dispatch(fetchRating()),
+    fetchQuizes: ()=>dispatch(fetchQuizes())
   }
 }
 
-//let withUrlResults = withRouter(Results);
 export default connect(mapStateToProps, mapDispatchToProps)(Results);

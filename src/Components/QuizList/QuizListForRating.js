@@ -4,22 +4,24 @@ import  './../../App.css';
 //import axios from "axios";
 import Loader from './../../UI/Loader/Loader';
 import {connect} from 'react-redux';
-import {fetchQuizes, fetchRateForQuiz} from './../../redux/reducers/quizReducer';
+import {fetchQuizes, fetchRateForQuiz, fetchQuizForRating} from './../../redux/reducers/quizReducer';
 import Rate from "./../Rate/Rate";
 
 
 
 class QuizListForRating extends Component{
   
+
+  		
 			renderQuizesResults(){
-				return this.props.quizes.map(rate=>{
+				return this.props.quizes.map(quiz=>{
 						
 		  			return(
 		  					<li
-		  						key={rate.id}
+		  						key={quiz.id}
 		  					>
-		  						<NavLink to={'/results/rate/' + rate.id }>
-		  							{"Тест для рейтинга " + rate.quizName}
+		  						<NavLink to={'/results/rate/' + quiz.id } onClick={()=>this.props.fetchQuizForRating(quiz.id)} >
+		  							{"Тест для рейтинга " + quiz.quizName}
 		  						</NavLink>
 		  					</li>
 		  			)
@@ -27,10 +29,10 @@ class QuizListForRating extends Component{
 			}
 
 		  	componentDidMount(){
-		  		// console.log("componentDidMount", this.props.match.params.id);
-		  		// 	let quizId=this.props.match.params.id;
-		  		//  	this.props.fetchRateForQuiz(quizId);
-		  			this.props.fetchQuizes();
+		  			//console.log(" this props.match.params.id    in   componentDidMount", this.props.match.params.id);
+		  		 	//let quizId=this.props.match.params.id;
+		  		  	//this.props.fetchRateForQuiz(quizId);
+		  			//this.props.fetchQuizes();
 		  			console.log("componentDidMount", this.props.match.params.id);
 		   //    	axios.get("https://abzagencytest.firebaseio.com/quizes.json").then(response=>{
 		   //      	console.log("response = ", response);
@@ -67,7 +69,10 @@ class QuizListForRating extends Component{
 					        </div>
 					}
 				</div>
-				<Rate />
+				  
+				 <Route path='/results/rate/:id'	   component= {Rate }/>
+ <Route path='/results' exact  component= {Rate }/>
+
 	    </div>
 	    )
 	}
@@ -83,7 +88,8 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
 	return{
 		fetchQuizes: ()=>dispatch(fetchQuizes()),
-		fetchRateForQuiz: (quizId)=>dispatch(fetchRateForQuiz(quizId))
+		fetchRateForQuiz: (quizId)=>dispatch(fetchRateForQuiz(quizId)),
+		fetchQuizForRating: (quizId)=>dispatch(fetchQuizForRating(quizId))
 	}
 }
 
