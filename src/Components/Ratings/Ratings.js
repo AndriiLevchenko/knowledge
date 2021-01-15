@@ -38,10 +38,6 @@ class Ratings extends Component{
     let cls = pageName.indexOf('results') == 22 ? "boxed" : "boxed2"; //RATING block is located either left(class boxed2) or roght (class boxed)
   
   
-      console.log(pageName.indexOf('results'));
-      console.log("cls = ", cls);
-
-    console.log(pageName);
       return (          
               <div className={cls} >
           <h2 className="heading">ТОП 10 знавців</h2>

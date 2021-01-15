@@ -7,11 +7,11 @@ import classes from './Navigation.module.css';
 const Navigation =(props)=> {
   return(
   	<div className={classes.pages}>
-        <h2>Pages</h2>
+        
         <ul>
-            <li><NavLink  activeStyle={{ color: '#BD4F21', fontWeight: "bold" }} to="/tests">Тести</NavLink></li>
-            <li><NavLink  activeStyle={{ color: '#BD4F21', fontWeight: "bold" }} to="/results">Результати</NavLink></li>
-            <li><NavLink  activeStyle={{ color: '#BD4F21', fontWeight: "bold" }} to="/quizcreator">Створи свій тест</NavLink></li>
+            <li><NavLink  activeStyle={{ backgroundColor: '#02BA95' }} to="/tests">ТЕСТИ</NavLink></li>
+            <li><NavLink  activeStyle={{ backgroundColor: '#02BA95' }} to="/results">РЕЗУЛЬТАТИ</NavLink></li>
+            <li><NavLink  activeStyle={{ backgroundColor: '#02BA95' }} to="/quizcreator">СТВОРИ СВІЙ ТЕСТ</NavLink></li>
         </ul>
     </div>
   )

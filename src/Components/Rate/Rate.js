@@ -7,32 +7,47 @@ import FinishedQuiz from './../FinishedQuiz/FinishedQuiz';
 import Loader from './../../UI/Loader/Loader';
 import {connect} from 'react-redux';
 import {fetchQuizById, quizAnswerClick, fetchRating, fetchRateById} from './../../redux/reducers/quizReducer';
+import {sortRatingForQuiz} from "./../../utils/functions/functions";
 
 class Rate extends Component {
 
 	
 	componentDidMount(){
 		//console.log('Quiz ID = ', this.props.match.params.id)
-		console.log(this.props.match.params.id);
+		//console.log(this.props.match.params.id);
+		//console.log("rating = ", this.props.rating);
 
 		//this.props.fetchRateById(this.props.match.params.id);
 		//this.props.fetchRating(this.props.match.params.id);
 	}
 	renderQuizes(){
-				let quizName=this.props.quizName;
+		let rating = this.props.rating;
+		let quizForRating = this.props.quizForRating;			
+				if(this.props.quizForRating) {
+					 console.log ("rating = ", rating);
+					 rating=sortRatingForQuiz(this.props.rating, this.props.quizForRating);
+					 console.log ("rating = ", rating);
+					
+				}
+				
+				console.log(this.props.match.params.id, quizForRating);
+		console.log("rating = ", this.props.rating);
+				//let quizName=this.props.quizName;
 			
-		  		return this.props.rating.map(rate=>{
+		  		return rating.map(rate=>{
 		  			
 		  			// console.log("quiz = ", quiz);
 		  			// console.log("quizResults = ", quiz.quizResults);
-		  			// console.log("quizName = ", quizName);
+		  			 console.log("rate = ", rate, "quizRate = ", rate.quizRate, "quizForRating = ", rate.quizResults);
 		  			if(!!rate.quizResults){
 			  			return(
 			  					<li
 			  						key={rate.id}
 			  					>
 			  						<NavLink to={'/rate/' + rate.id }>
-			  							{rate.surname + " " + rate.quizResults.quizName + "   школа " + rate.schoolnumber  + "  RATING     " + this.props.quizForRating}
+			  							<span>{ " " + rate.surname + " " + rate.name}</span><span>{"   школа " + rate.schoolnumber} </span><span> RATE { rate.quizResults[quizForRating] ? rate.quizResults[quizForRating].toFixed(2) : "no"}</span>
+			  							
+			  							
 			  						</NavLink>
 			  					</li>
 			  			)
@@ -41,13 +56,14 @@ class Rate extends Component {
 	}
 	
   render(){
-  	console.log(this.props, this.props.quizForRating, this.props.quiz);
-  	console.log("this/props.rate = ", this.props.match.params.id);
-  
+  	console.log(this.props, this.props.quizName, this.props.quiz);
+  	//console.log("this/props.rate = ", this.props.match.params.id);
+  	const quizNamequizName=this.props.quizName ? "тесту " + this.props.quizName : " всіх тестів";
+  	console.log(this.props.quizName);
     return (
    
         <div className="boxed">
-        		 <h2 className="heading"> {"Результати проходження тесту " + this.props.rating.quizName || "тестів"} </h2>
+        		 <h2 className="heading"> Результати проходження  {quizNamequizName} </h2>
         	  	{this.props.loading
         	  		? <Loader />
 	        			:   <div className="content" >
@@ -74,9 +90,9 @@ function mapStateToProps(state){
 		activeQuestion: state.quizReducer.activeQuestion,
 		answerState: state.quizReducer.answerState,  
 		loading: state.quizReducer.loading,
-		quizName: state.quizReducer.quizRate,
+		quizName: state.quizReducer.quizName,	
 		rating: state.quizReducer.rating,
-		rate: state.quizReducer.rate,
+		quizRate: state.quizReducer.quizRate,
 		quiz: state.quizReducer.quiz,
 		quizForRating: state.quizReducer.quizForRating
 	}

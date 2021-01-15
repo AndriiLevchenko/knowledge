@@ -24,15 +24,13 @@ const Home=()=>{
 
           <div className="wrapper">  
               <div className="home">
-               <Auth />
+                  <Auth />
                   <Content />
                   <QuizList />
                  
                   <Ratings />
               </div>
-              <div className="footer">
-                <p>Copyright &copy; 2020 www.knowledge.com.ua <strong> Knowledge</strong></p>
-              </div>
+             
           </div>
   )
 }

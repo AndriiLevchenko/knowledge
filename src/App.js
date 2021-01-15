@@ -13,7 +13,7 @@ import {autoLogin} from './redux/reducers/authReducer';
 
 import './App.css';
 import Navigation from './Components/Navigation/Navigation';
-import Content from './Components/Content/Content';
+//import Content from './Components/Content/Content';
 import Home from './Components/Home';
 import Results from './Components/Results';
 import Auth from './Components/Auth/Auth';
@@ -60,31 +60,33 @@ class App extends Component{
 
 
               <div className="wrapper">
-              <a href="/">
-                      <div className="header">
-                        <h1>Знання</h1>
-                        <h2>Тести з перевірки знань на різноманітну тематику.</h2>
-                      </div>
-              </a>
-                      <Navigation />
-
-                <Layout>
-                    {routes}
-                </Layout>
-                      <div className="footer">
-                        <p>Copyright &copy; 2020 www.knowledge.com.ua <strong> Knowledge</strong></p>
-                      </div>
-
-      
-              </div>
               
+                  <div className="header">
+                      <a href="/">
+                          <h1>ЗНАННЯ</h1>
+                          <h2>Тести з перевірки знань на різноманітну тематику</h2>
+                      </a>
+                  </div>
+                  <div className="headerRight">
+                          <Navigation />
+                  </div>
+                  <Layout>
+                        {routes}
+                  </Layout>
+                  <div className="footer">
+                            <p>Copyright &copy; 2020 www.educated.com.ua <strong> Educated</strong></p>
+                  </div>
+
+          
+              </div>
+                  
       </div>
   )
   }
 }
 
 function mapStateToProps(state){
-    console.log( state);
+    console.log( state.authReducer);
   return{
     isAuthenticated: !!state.authReducer.token
   }

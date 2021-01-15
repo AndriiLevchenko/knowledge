@@ -8,16 +8,19 @@ const AUTH_LOG_OUT='AUTH_LOG_OUT';
 
 const initialState={
 	currentUser: null,
+	currentUserId: null,
 	token: null
 };
 
 export default function  authReducer(state=initialState, action){
 	switch(action.type){
 		case AUTH_SUCCESS:
+		alert( action.currentUser + action.currentUserId);
 			return{
 				...state,
 				token: action.token,
-				currentUser: action.currentUser
+				currentUser: action.currentUser,
+				currentUserId: action.currentUserId
 			}
 		case AUTH_LOG_OUT:
 			return{
@@ -29,11 +32,13 @@ export default function  authReducer(state=initialState, action){
 		return state
 	}
 }
-export function authSuccess(token, currentUser){
+export function authSuccess(token, currentUser, currentUserId){
+
 	return{
 		type: AUTH_SUCCESS,
 		token,
-		currentUser
+		currentUser,
+		currentUserId
 	}
 }
 export function autoLogOut(time){
@@ -102,6 +107,14 @@ export function auth(email, password, isLogin){
 		const data=response.data;
 		console.log("response = ", response);
 		var currentUser = await fire.auth().currentUser;
+		//Опредедяем id юзера в Firebase ( типа -Wrefd53h4gdg5f45s4523gd7443) и записываем в state под именем currentUserId.
+		const response2 = await axios.get('https://abzagencytest.firebaseio.com/rating.json');	
+  			console.log(response2.data);
+  			const found=Object.values(response2.data).findIndex(element=>element.email == response.data.email);
+  			console.log("found = ", found, found.email);
+  			const usersArrayElement = Object.keys(response2.data)[found];
+  			console.log(usersArrayElement);
+  			console.log("currentUserId = ", usersArrayElement);
 
 		//Вставить после выясненмя с data
 		// const response = await fire.auth().signInWithEmailAndPassword(email, password);
@@ -109,15 +122,15 @@ export function auth(email, password, isLogin){
 		// const data=response.data;
 		// var currentUser = fire.auth().currentUser;
 
-		console.log("currentUser = ", currentUser);
-		const expirationDate = new Date(new Date().getTime() + data.expiresIn*1000);
+		
+		const expirationDate = new Date(new Date().getTime() + data.expiresIn*3000);
 
 		localStorage.setItem('token', data.idToken);
 		localStorage.setItem('userId', data.localId);
 		localStorage.setItem('expirationDate', expirationDate);
 		localStorage.setItem('currentUser', data.email);
 
-		dispatch(authSuccess(data.idToken, data.email));
+		dispatch(authSuccess(data.idToken, data.email, usersArrayElement));
 		dispatch(autoLogOut(data.expiresIn));
 	}
 }

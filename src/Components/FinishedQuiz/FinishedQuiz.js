@@ -8,13 +8,17 @@ import {Link} from 'react-router-dom';
 const FinishedQuiz =(props)=> {
 	
 		 	console.log( 'props.quiz = ', props.quiz);
+      console.log( 'props = ', props);
 		 	console.log( 'props.results = ', props.results);
-		 	const successCount = Object.keys(props.results).reduce((total, key)=>{
-		 		if(props.results[key] === 'success'){
-		 			total ++
-		 		}
-		 		return total
-		 	}, 0);
+      const rateForSaveFromProps = props.successCount/props.quiz.length*100;
+      
+		 	// const successCount = Object.keys(props.results).reduce((total, key)=>{
+		 	// 	if(props.results[key] === 'success'){
+		 	// 		total ++
+		 	// 	}
+		 	// 	return total
+		 	// }, 0);
+    //   const rateForSave=successCount/props.quiz.length*100;
     return (
       	<div className="FinishedQuiz">
     
@@ -24,8 +28,8 @@ const FinishedQuiz =(props)=> {
       								props.results[quizItem.id] ==='error' ? 'fa-times' : 'fa-check',
       								props.results[quizItem.id]
       							];
-      							console.log('cls = ', cls);
-      							console.log('quizitem.id = ', quizItem.id);
+      							//console.log('cls = ', cls);
+      							//console.log('quizitem.id = ', quizItem.id);
       							//console.log('classes[props.results[quizItem.id]] = ', classes[props.results[quizItem.id]]);
       				return(
         					<li
@@ -40,8 +44,9 @@ const FinishedQuiz =(props)=> {
 
 			</ul>
 	
-			<p>  Вірно {successCount} з {props.quiz.length} </p>
+			<p>  Вірно {props.successCount} з {props.quiz.length} </p>
 				      <Button onClick={props.onRetry} value={'Повторити'} />
+              <Button onClick={props.saveResult} value={'Зберегти результат'} />
         			<Link to='/'>
         				<Button onClick={props.onRetry}  value={'Список тестів'} />
         			</Link>	

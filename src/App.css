@@ -63,20 +63,22 @@ a:hover {
 .boxed .heading, .boxed2 .heading {
   margin: 4px;
   padding: 9px 10px;
- background: #5FD3BE url(images/img3.gif) no-repeat center bottom;
+  background-image: linear-gradient(to right, #5717AE , #412EC4);
   border-top: 2px solid #737947;
   border-bottom: 1px solid #F4F5EC;
-  font: bold 1em Tahoma, Arial, Helvetica, sans-serif;
+  font: bold 18px Tahoma, Arial, Helvetica, sans-serif;
   color: #FFFFFF;
 }
 .boxed .heading{
-  background: #5FD3BE url(images/img32.gif) no-repeat center bottom;
+  background-image: linear-gradient(to right, #412EC4 , #0261F0);
 }
 
 .boxed .content, .boxed2 .content {
   margin: 0;
   padding: 5px 14px 10px 14px;
+  font-size: 16px;
 }
+
 
 .boxed ul, .boxed2 ul {
   margin: 0;
@@ -88,10 +90,17 @@ a:hover {
 .boxed li, .boxed2 li {
   padding: 3px 0;
   border-top: 1px dotted #939A3C;
+  text-align: left;
 }
 
 .boxed li.first, .boxed2 li.first {
   border: none;
+}
+.boxed li span{
+  display: inline-block;
+  width: 150px;
+  margin-right: 55px;
+  text-align: left;
 }
 /*
 .boxed, .boxed2 a {
@@ -114,16 +123,18 @@ a:hover {
   float: left;
   width: 198px;
   height: 110px;
-  background: url(images/img1.jpg);
-  border: 1px solid #939A3C;
+  background-image: linear-gradient(to right, #5717AE , #412EC4);
 }
-
+.header a{
+   text-decoration: none;
+}
 .header h1 {
   margin: 0;
   padding: 20px 0 0 0;
   text-align: center;
   letter-spacing: -1px;
   font-size: 3em;
+  color: white;
 }
 
 .header h2 {
@@ -132,6 +143,11 @@ a:hover {
   text-align: center;
   font-size: 1.2em;
   font-style: italic;
+  color: white;
+}
+.headerRight{
+  float: right;
+
 }
 /*
 .header a {
@@ -203,7 +219,7 @@ a:hover {
 }
 
 .tests .boxed {
-  width: 980px;
+  width: 100%;
   margin: 0 auto;
  
     background: #E0E3C9;
@@ -211,12 +227,12 @@ a:hover {
 }
 
 /* Posts */
-
+/*
 .posts {
   float: right;
   width: 412px;
-}
-
+}*/
+/*
 .post {
   padding-top: 10px;
 }
@@ -241,7 +257,7 @@ a:hover {
 
 .post .meta p {
   margin: 0;
-}
+}*/
 
 
 /* Search */
@@ -324,3 +340,43 @@ a:hover {
   color: black;
   cursor: pointer;
  }
+@media screen and (max-width: 1023px) {
+.wrapper {
+  width: 100%;
+}
+.header{
+  float: right;
+  width: 93%;
+   height: 50px;
+   background-image: linear-gradient(to right, #501FB6 , #045FEF);
+   margin: 3px 0 ;
+}
+.headerRight{
+  box-sizing: border-box;
+  width: 100%;
+   background: cyan;
+  margin-bottom: 3px;
+  
+}
+.header h1 {
+  display: none;
+  font-size: 14px;
+}
+.header h2 {
+  display: inline-block;
+  margin: 7px 0;
+  padding-left: 10px;
+  font-size: 1.8em;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+
+.home .boxed, .boxed2 {
+  width: 50%;
+  float: left;
+  margin: 0 0 10px 0;
+}
+
+
+}

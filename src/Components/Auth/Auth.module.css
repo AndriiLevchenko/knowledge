@@ -11,8 +11,8 @@
 
   margin: 0 0 10px 0;
   padding: 0;
-  background: #E0E3C9;
-  border: 1px solid #939A3C;
+  background-image: linear-gradient(to right, #5717AE , #412EC4);
+ 
 }
 
 .boxed .heading {
@@ -20,7 +20,6 @@
   padding: 9px 10px;
   background: #5FD3BE url(./../../images/img3.gif) no-repeat center bottom;
   border-top: 1px solid #737947;
-  border-bottom: 1px solid #F4F5EC;
   font: bold 1em Tahoma, Arial, Helvetica, sans-serif;
   color: #FFFFFF;
 }
@@ -52,13 +51,12 @@
 .currentUser{
   padding: 25px 0;
   font-size: 1.5em;
+  color: white;
 }
 
 
 /* Search */
-.content button{
-  height: 27px;
-}
+
 .content a{
   padding-left: 0;
   background: none;
@@ -76,8 +74,20 @@
   font: bold 1em Tahoma, Arial, Helvetica, sans-serif;
   color: #939A3C;
 }
-label{
+.Auth {
+  height: 27px;
+  font-size: 1px;
+}
+.boxed label{
  display: flex;
  justify-content: left;
+ color: white;
+}
+
+@media screen and (max-width: 1023px) {
+.boxed {
+  width: 50%;
+ 
+}
 }
 

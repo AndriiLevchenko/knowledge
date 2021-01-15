@@ -5,7 +5,7 @@ import FinishedQuiz from './../FinishedQuiz/FinishedQuiz';
 //import axios from './../../axios/axios-quiz';
 import Loader from './../../UI/Loader/Loader';
 import {connect} from 'react-redux';
-import {fetchQuizById, quizAnswerClick, retryQuiz} from './../../redux/reducers/quizReducer';
+import {fetchQuizById, quizAnswerClick, retryQuiz, saveResult} from './../../redux/reducers/quizReducer';
 
 class Quiz extends Component {
 
@@ -154,6 +154,8 @@ class Quiz extends Component {
 	        	  				results={this.props.results}
 	        	  				quiz={this.props.quiz}
 	        	  				onRetry={this.props.retryQuiz}
+	        	  				saveResult={this.props.saveResult}
+	        	  				successCount={this.props.successCount}
 	        	  			/>
 	        			:   <ActiveQuiz 
 	        					answers={this.props.quiz[this.props.activeQuestion].answers}
@@ -179,14 +181,17 @@ function mapStateToProps(state){
 		activeQuestion: state.quizReducer.activeQuestion,
 		answerState: state.quizReducer.answerState,  
 		loading: state.quizReducer.loading,
-		quiz: state.quizReducer.quiz
+		quiz: state.quizReducer.quiz,
+		successCount: state.quizReducer.successCount,
+		rateForSafe: state.quizReducer.rateForSafe
 	}
 }
 function mapDispatchToProps(dispatch){
 	return{
 		fetchQuizById:id=>dispatch(fetchQuizById(id)),
 		quizAnswerClick:answerId=>dispatch(quizAnswerClick(answerId)),
-		retryQuiz: ()=>dispatch(retryQuiz())
+		retryQuiz: ()=>dispatch(retryQuiz()),
+		saveResult: rateForSave=>dispatch(saveResult(rateForSave))
 	}
 }
 

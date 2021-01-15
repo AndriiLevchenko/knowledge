@@ -15,13 +15,13 @@ class QuizListForRating extends Component{
   		
 			renderQuizesResults(){
 				return this.props.quizes.map(quiz=>{
-						
+					console.log(quiz);
 		  			return(
 		  					<li
 		  						key={quiz.id}
 		  					>
-		  						<NavLink to={'/results/rate/' + quiz.id } onClick={()=>this.props.fetchQuizForRating(quiz.id)} >
-		  							{"Тест для рейтинга " + quiz.quizName}
+		  						<NavLink to={'/results/rate/' + quiz.id } onClick={()=>this.props.fetchQuizForRating(quiz.id, quiz.quizName)} >
+		  							{"  " + quiz.quizName}
 		  						</NavLink>
 		  					</li>
 		  			)
@@ -33,7 +33,7 @@ class QuizListForRating extends Component{
 		  		 	//let quizId=this.props.match.params.id;
 		  		  	//this.props.fetchRateForQuiz(quizId);
 		  			//this.props.fetchQuizes();
-		  			console.log("componentDidMount", this.props.match.params.id);
+		  			//console.log("componentDidMount", this.props.match.params.id);
 		   //    	axios.get("https://abzagencytest.firebaseio.com/quizes.json").then(response=>{
 		   //      	console.log("response = ", response);
 		   //    	})
@@ -47,7 +47,7 @@ class QuizListForRating extends Component{
    	render(){
 		console.log(this.props);
 		
-		console.log("this.props.match.params.id  in render", this.props.match.params.id);
+		//console.log("this.props.match.params.id  in render", this.props.match.params.id);
 		  			let quizId=this.props.match.params.id;
 		  		 	//this.props.fetchRateForQuiz(quizId);
   
@@ -89,7 +89,7 @@ function mapDispatchToProps(dispatch){
 	return{
 		fetchQuizes: ()=>dispatch(fetchQuizes()),
 		fetchRateForQuiz: (quizId)=>dispatch(fetchRateForQuiz(quizId)),
-		fetchQuizForRating: (quizId)=>dispatch(fetchQuizForRating(quizId))
+		fetchQuizForRating: (quizId, quizName)=>dispatch(fetchQuizForRating(quizId, quizName))
 	}
 }
 

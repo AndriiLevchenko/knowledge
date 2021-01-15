@@ -9,7 +9,7 @@ import {Link} from "react-router-dom";
 import {required, maxLengthCreator} from "./../../utils/validations/validators";
 import {auth} from "./../../redux/reducers/authReducer";
 
-const maxLength18 = maxLengthCreator(18);
+const maxLength18 = maxLengthCreator(34);
 
 const LoginForm =(props)=> {
     return(
@@ -41,10 +41,7 @@ const Auth =(props)=> {
             <div className={classes.currentUser}>
                 {props.currentUser}
             </div>
-            <Link to={"/logout"}>
-                <Button value="Вийти"  />
-            </Link>
-
+           
         </div>
         )
         } else {
