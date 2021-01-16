@@ -1,9 +1,12 @@
 .MenuToggle{
 	position: fixed;
+	padding: 8px;
 	top: 40px;
-	left: 40px;
+	left: 22px;
 	font-size: 20px;
 	cursor: pointer;
+	background-color: white;
+	border-radius: 6px;
 	color: cyan;
 	z-index: 12;
 	transition: opacity, left .22s ease-in;
@@ -14,4 +17,10 @@
 }
 .MenuToggle.open{
 	left: 320px;
+}
+@media screen and (max-width: 1023px){
+	.MenuToggle{
+		top: 31px;
+		left: 32px;
+	}
 }

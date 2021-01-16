@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import {reduxForm, Field} from "redux-form";
 import {Link} from "react-router-dom";
 import {required, maxLengthCreator} from "./../../utils/validations/validators";
-import {auth} from "./../../redux/reducers/authReducer";
+import {auth, logOutUser} from "./../../redux/reducers/authReducer";
 
 const maxLength18 = maxLengthCreator(34);
 
@@ -41,7 +41,7 @@ const Auth =(props)=> {
             <div className={classes.currentUser}>
                 {props.currentUser}
             </div>
-           
+            <Button value="Вийти"  onClick={props.logOutUser}/> 
         </div>
         )
         } else {
@@ -70,7 +70,8 @@ function mapStateToProps(state){
 
 function mapDispetchToProps(dispatch){
   return{
-    auth: (email, password, isLogin) => dispatch(auth(email, password, isLogin))
+    auth: (email, password, isLogin) => dispatch(auth(email, password, isLogin)),
+    logOutUser: () => dispatch(logOutUser())
   }
 }
 

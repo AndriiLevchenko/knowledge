@@ -74,9 +74,9 @@
   font: bold 1em Tahoma, Arial, Helvetica, sans-serif;
   color: #939A3C;
 }
-.Auth {
-  height: 27px;
-  font-size: 1px;
+
+.boxed button{
+  font-size: 16px;
 }
 .boxed label{
  display: flex;
@@ -84,10 +84,12 @@
  color: white;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1023px){
 .boxed {
   width: 50%;
- 
+}
+.boxed{
+  background-image: linear-gradient(to right, #501FB6 , #0261F0);
 }
 }
 
