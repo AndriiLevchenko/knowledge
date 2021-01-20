@@ -18,7 +18,8 @@
 .env.test.local
 .env.production.local
 
-Fire.js
+fire
+src/fire.js
 index.js
 Home
 /Quizes
