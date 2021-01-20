@@ -83,13 +83,41 @@
  justify-content: left;
  color: white;
 }
-
+@media screen and (min-width: 1140px) {
+.boxed{
+  width: 318px;
+}
+}
 @media screen and (max-width: 1023px){
 .boxed {
   width: 50%;
-}
-.boxed{
   background-image: linear-gradient(to right, #501FB6 , #0261F0);
+}
+.currentUser{
+  padding: 5px 0;
+}
+}
+@media screen and (max-width: 616px){
+.boxed {
+  width: 100%;
+}
+.boxed button{
+    min-width: 100px;
+    height: 30px;
+    margin-bottom: 3px;
+    font-size: 11px;
+    border: 1px solid #0066cc;
+    background-color: #0099cc;
+    border-radius: 6px;
+    color: #ffffff;
+}
+.boxed button:nth-child(odd){
+  margin-left: 4%;
+    float: left;
+}
+.boxed button:nth-child(even){
+  margin-right: 4%;
+    float: right;
 }
 }
 

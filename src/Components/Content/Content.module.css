@@ -36,3 +36,8 @@
   width: 48%;
 }
 }
+@media screen and (max-width: 616px) {
+.posts {
+  display: none;
+}
+}
