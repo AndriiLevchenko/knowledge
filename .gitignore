@@ -18,9 +18,9 @@
 .env.test.local
 .env.production.local
 
-fire.js
+Fire.js
 index.js
-Home.js
+Home
 /Quizes
 
 npm-debug.log*
