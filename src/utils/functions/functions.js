@@ -37,17 +37,11 @@ export const sortRatingForQuiz =(rating, quiz) =>{
 			//console.log("index = ", index);
 			//console.log("sortedRating[index]    не попал", index,  sortedRating[index].quizRate);
 		} else {
-			//console.log( "index NUMBER = ", index, rating[index].quizResults); 
-			//console.log(" rating[index].quizResults = ", index, rating[index].quizResults, "quiz = ", quiz);
 			const indexOfQuiz = Object.keys(rating[index].quizResults).indexOf(quiz);
 			console.log( "index NUMBER = ", index, "quizResults = ", rating[index].quizResults, "indexOfQuiz = ", indexOfQuiz); 
-			//console.log("Весь массив ключей и сам ключ", Object.keys(rating[index].quizResults), quiz, "indexOfQuiz = ", indexOfQuiz, "index = ", index);
-			//sortedRating[index] = {...rating[index]};
-			//console.log(sortedRating, sortedRating[index]);
+		
 			if (indexOfQuiz !==-1){
-				const rateByIndexOfQuiz = rating[index].quizResults[quiz];
-				//console.log("index = ", index, "indexOfQuiz = ", indexOfQuiz, "rateByIndexOfQuiz = ", rateByIndexOfQuiz, "quiz = ", quiz);
-				//sortedRating[index].quizResults = "немає даних";
+			
 				
 					sortedRating[index] = {...rating[index]};
 					sortedRating[index].quizResults = {...rating[index].quizResults};

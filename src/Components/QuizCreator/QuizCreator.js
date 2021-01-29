@@ -7,7 +7,8 @@ import {createControl, validate, validateForm} from './../../form/formFramework'
 import Auxiliary from './../../hoc/Auxiliary';
 import axios from "axios";
 import {connect} from 'react-redux';
-import {createQuizQuestion, finishCreateQuiz} from './../../redux/reducers/createReducer';
+import {createQuizQuestion, finishCreateQuiz, closeModalWindow} from './../../redux/reducers/createReducer';
+import Modal from "./../Modal/Modal";
 
 function createOptionControl(number){
 	return createControl( { label: `Відповідь ${number}`, errorMessage: 'Відповідь не може бути порожньою', id: number}, 
@@ -41,10 +42,12 @@ class QuizCreator extends Component{
 	createQuizHandler= event=>{		
 		event.preventDefault();
 		console.log(this.props.quiz);
-		axios.post("https://abzagencytest.firebaseio.com/quizes.json", this.props.quiz).then(response=>{
-			console.log("post response = ", response);
-		}).catch(error=>console.log("error = ", error));
-			//this.props.finishCreateQuiz();
+		const newQuiz = this.props.quiz;
+		// axios.post("https://abzagencytest.firebaseio.com/quizes.json", newQuiz).then(response=>{
+		// 	console.log("post response = ", response);
+		// 	alert("Тест створено");
+		// }).catch(error=>console.log("error = ", error));
+		this.props.finishCreateQuiz(newQuiz);
 	}
 
 	changeHandler =(value, controlName)=>{
@@ -128,6 +131,8 @@ class QuizCreator extends Component{
 	    return (
 	      	<div className={classes.QuizCreator}>
 				<div>
+					{this.props.isModalOpen && 
+						<Modal modalMessage = {this.props.modalMessage} closeModalWindow = {this.props.closeModalWindow} />}
 					<h1>Створення тесту </h1>
 					<form onSubmit={this.submitHandler}>
 					{this.renderControls()}
@@ -166,13 +171,16 @@ class QuizCreator extends Component{
 
 function mapStateToProps(state){
 	return{
-		quiz: state.createReducer.quiz
+		quiz: state.createReducer.quiz, 
+		isModalOpen: state.createReducer.isModalOpen,
+		modalMessage: state.createReducer.modalMessage 
 	}
 }
 function mapDispatchToProps(dispatch){
 	return{
 		createQuizQuestion: item=>dispatch(createQuizQuestion(item)),
-		finishCreateQuiz: ()=>dispatch(finishCreateQuiz())
+		finishCreateQuiz: (newQuiz)=>dispatch(finishCreateQuiz(newQuiz)),
+		closeModalWindow: ()=>dispatch(closeModalWindow())
 	}
 }
 

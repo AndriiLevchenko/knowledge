@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import classes from './Auth.module.css';
 import Button from './../../UI/Button/Button';
 import Input from './../../UI/Input/Input';
-import axios from 'axios';
+//import axios from 'axios';
 // import FormControlsInput from './../Input/FormControlsInput';
 // import {reduxForm, Field} from 'redux-form';
 import {connect} from 'react-redux';

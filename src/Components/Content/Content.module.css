@@ -29,6 +29,10 @@
 .post .meta p {
   margin: 0;
 }
+.story p{
+  text-align: left;
+  text-indent: 17px; 
+}
 
 
 @media screen and (max-width: 1023px) {

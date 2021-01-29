@@ -5,6 +5,7 @@ import ActiveQuiz from './../ActiveQuiz/ActiveQuiz';
 import FinishedQuiz from './../FinishedQuiz/FinishedQuiz';
 //import axios from './../../axios/axios-quiz';
 import Loader from './../../UI/Loader/Loader';
+import Select from './../../UI/Select/Select';
 import {connect} from 'react-redux';
 import {fetchQuizById, quizAnswerClick, fetchRating, fetchRateById} from './../../redux/reducers/quizReducer';
 import {sortRatingForQuiz} from "./../../utils/functions/functions";
@@ -32,12 +33,8 @@ class Rate extends Component {
 				
 				console.log(this.props.match.params.id, quizForRating);
 		console.log("rating = ", this.props.rating);
-				//let quizName=this.props.quizName;
 			
 		  		return rating.map(rate=>{
-		  			
-		  			// console.log("quiz = ", quiz);
-		  			// console.log("quizResults = ", quiz.quizResults);
 		  			 console.log("rate = ", rate, "quizRate = ", rate.quizRate, "quizForRating = ", rate.quizResults);
 		  			if(!!rate.quizResults){
 			  			return(
@@ -64,6 +61,7 @@ class Rate extends Component {
    
         <div className="boxed">
         		 <h2 className="heading"> Результати проходження  {quizNamequizName} </h2>
+        		  
         	  	{this.props.loading
         	  		? <Loader />
 	        			:   <div className="content" >

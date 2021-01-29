@@ -1,5 +1,5 @@
 import React, {Component}  from 'react';
-import {NavLink, withRouter} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import  './../../App.css';
 //import axios from "axios";
 import Loader from './../../UI/Loader/Loader';

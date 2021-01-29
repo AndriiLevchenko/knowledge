@@ -38,17 +38,12 @@ class QuizListForRating extends Component{
 		   //      	console.log("response = ", response);
 		   //    	})
 		  	}
-		  	// componentDidUpdate(){		  		
-		  	// 	console.log("componentDidUpdate");
-		  	// 	let quizId=this.props.match.params.id;
-		  	// 	this.props.fetchRateForQuiz(quizId);
-		  	// }
-
+		  
    	render(){
 		console.log(this.props);
 		
 		//console.log("this.props.match.params.id  in render", this.props.match.params.id);
-		  			let quizId=this.props.match.params.id;
+		  			//let quizId=this.props.match.params.id;
 		  		 	//this.props.fetchRateForQuiz(quizId);
   
   

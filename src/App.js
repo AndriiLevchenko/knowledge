@@ -47,7 +47,7 @@ class App extends Component{
        
             <Route path='/quizcreator' component={QuizCreator} />
             <Route path='/quiz/:id' component={Quiz} />
-        <Route path='/results'  component={Results} />		
+            <Route path='/results'  component={Results} />		
             <Route path='/logout' component={LogOut} />
             <Route path='/' exact component={Home} />
             <Redirect to='/' />
@@ -70,7 +70,7 @@ class App extends Component{
                   <div className="headerRight">
                           <Navigation />
                   </div>
-                  <Layout>
+                  <Layout isAuthenticated = {this.props.isAuthenticated}>
                         {routes}
                   </Layout>
                   <div className="footer">
