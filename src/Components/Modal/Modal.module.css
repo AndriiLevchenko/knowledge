@@ -1,31 +1,4 @@
-/*
-.ending {
-  display: block;
-  top: 10px;
-  left: 0;
-  right: 0;
-  width: 80%;
-  position: absolute;
-  padding: 27px;
-  margin: auto;
-  background-color: #FFF8DC;
-  background: linear-gradient(#FFF8DC, #DEB887, #FFF8DC);
-  border: 5px solid SaddleBrown;
-  border-radius: 38px;
-  z-index: 3;
-}
-.ending {
-  display: block;
-}
-.ending button{
-  width: 86%;
-  height: 11%;
-  margin: auto;
-  padding: 10px;
-  font-size: 1.8em;
-  border: 1px solid grey;
-  border-radius: 13px;
-}*/
+
 .finishWideScreen, .endingScreen{
   position: absolute;
   width: 100%;
@@ -45,7 +18,7 @@
   width: 50%;
   min-height: 270px;
   position: absolute;
-  top: -123px;
+ 
  left: 0; 
   right: 0; 
   margin-left: auto; 
@@ -144,7 +117,7 @@
   font-size: 1.0em;  
 }*/
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 616px) {
   body{ 
     background: linear-gradient(white, #a9f5f2, white, #a9f5f2, white);
   }
@@ -155,13 +128,13 @@
   h1{
     font-size: 1.0em;  
   }
-  li{ 
+ /* li{ 
     height: 32px; 
     margin: 2px;
   }
   .beginning, .ending {
     width: 76%;
-  }
+  }*/
   /*.beginning p{
     font-size: 1.0em;
   }

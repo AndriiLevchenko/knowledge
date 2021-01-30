@@ -1,7 +1,6 @@
 .QuizCreator {
-  display: flex;
-  justify-content: center;
-  padding: 14px 0;
+ 
+  padding: 14px;
   width: 100%;
   color: blue;
   background-color: #f3ffcf;
@@ -9,9 +8,7 @@
   flex-direction: column;
   text-align: center;*/
 }
-.QuizCreator form {
-  width: 680px;
-}
+
 .QuizCreator h1 {
   margin: 4px auto;
 }

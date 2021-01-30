@@ -94,7 +94,7 @@
   background-image: linear-gradient(to right, #501FB6 , #0261F0);
 }
 .currentUser{
-  padding: 5px 0;
+  padding: 2px 0;
 }
 }
 @media screen and (max-width: 616px){
