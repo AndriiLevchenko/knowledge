@@ -23,26 +23,34 @@ class Rate extends Component {
 	}
 	renderQuizes(){
 		let rating = this.props.rating;
-		let quizForRating = this.props.quizForRating;			
+		let quizForRating = this.props.quizForRating;		
+		//console.log("rating = ", rating, "quizForRating = ", quizForRating);	
 				if(this.props.quizForRating) {
-					 console.log ("rating = ", rating);
-					 rating=sortRatingForQuiz(this.props.rating, this.props.quizForRating);
-					 console.log ("rating = ", rating);
-					
+					rating=sortRatingForQuiz(this.props.rating, this.props.quizForRating);
+				} else {
+					rating=sortRatingForQuiz(rating, "overall");
 				}
 				
-				console.log(this.props.match.params.id, quizForRating);
-		console.log("rating = ", this.props.rating);
-			
 		  		return rating.map(rate=>{
-		  			 console.log("rate = ", rate, "quizRate = ", rate.quizRate, "quizForRating = ", rate.quizResults);
+		  			 //console.log("rate = ", rate, "quizRate = ", rate.quizRate, "quizForRating = ", rate.quizResults);
 		  			if(!!rate.quizResults){
+
+
+
+		  			// 	let sum=0;
+		  			// 	let arrayRate = Object.values(rate.quizResults);
+							// for(let i=0;i<arrayRate.length;i++){
+							//     sum = sum + parseInt(arrayRate[i]);
+							// }
+
+//console.log("rate = ", rate);
+
 			  			return(
 			  					<li
 			  						key={rate.id}
 			  					>
 			  						<NavLink to={'/rate/' + rate.id }>
-			  							<span>{ " " + rate.surname + " " + rate.name}</span><span>{"   школа " + rate.schoolnumber} </span><span> RATE { rate.quizResults[quizForRating] ? rate.quizResults[quizForRating].toFixed(2) : "no"}</span>
+			  							<span>{ " " + rate.surname + " " + rate.name}</span><span>{"   школа " + rate.schoolnumber} </span><span> Rate { rate.quizResults[quizForRating] ? (rate.quizResults[quizForRating]/100).toFixed(2) : rate.overallResult.toFixed(2)}</span>
 			  							
 			  							
 			  						</NavLink>
@@ -54,7 +62,6 @@ class Rate extends Component {
 	
   render(){
   	console.log(this.props, this.props.quizName, this.props.quiz);
-  	//console.log("this/props.rate = ", this.props.match.params.id);
   	const quizNamequizName=this.props.quizName ? "тесту " + this.props.quizName : " всіх тестів";
   	console.log(this.props.quizName);
     return (

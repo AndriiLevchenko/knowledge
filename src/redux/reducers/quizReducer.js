@@ -215,11 +215,12 @@ export function fetchQuizes(){
 	  			Object.keys(response.data).forEach((key, index)=>{
 	  				quizes.push({
 	  					quizNumber: index,
-	  					id: key,
+	  					id: key
 	  				})
 	  			});
 	  			Object.values(response.data).forEach((value, index)=>{
-	  				quizes[index].quizName = value[0].quizName
+	  				quizes[index].quizName = value[0].quizName;
+	  				quizes[index].difficulty = value[0].difficulty;
 	  			});
 	  			
 	  	dispatch(fetchQuizesSuccess(quizes));
@@ -237,7 +238,7 @@ export function fetchRating(){
 	  			console.log(response.data);
 	  			const rating=[];
 	  			Object.values(response.data).forEach((value, index)=>{
-	  				console.log("key = ", value.email);
+	  				console.log("key = ", value.quizResults);
 	  				console.log("index = ", index);
 	  				
 	  				rating.push({
@@ -250,7 +251,7 @@ export function fetchRating(){
 	  					quizResults: value.quizResults
 	  				})
 	  			});
-	  			//console.log(response.data.rating[0]);
+	  			console.log(rating);
 	  	dispatch(fetchRatingSuccess(rating));
 	  		} catch(error) {
 	  			dispatch(fetchQuizesError(error));
@@ -313,6 +314,7 @@ export function fetchQuizesSuccess(quizes){
 		   }
 }
 export function fetchRatingSuccess(rating){
+	alert("fetchRatingSuccess");
 	return {type: FETCH_RATING_SUCCESS,
 			rating
 		   }
@@ -331,7 +333,7 @@ export function fetchQuizForRating(quizForRating, quizName){
 }
 export function fetchRateSuccess(rate){
 	console.log(rate);
-	return {type: FETCH_QUIZ_SUCCESS,
+	return {type: FETCH_RATE_SUCCESS,
 			rate
 		   }
 }

@@ -15,7 +15,7 @@ class QuizListForRating extends Component{
   		
 			renderQuizesResults(){
 				return this.props.quizes.map(quiz=>{
-					console.log(quiz);
+					//console.log(quiz);
 		  			return(
 		  					<li
 		  						key={quiz.id}
@@ -40,7 +40,7 @@ class QuizListForRating extends Component{
 		  	}
 		  
    	render(){
-		console.log(this.props);
+		//console.log(this.props);
 		
 		//console.log("this.props.match.params.id  in render", this.props.match.params.id);
 		  			//let quizId=this.props.match.params.id;
@@ -57,9 +57,7 @@ class QuizListForRating extends Component{
 						? <Loader />
 						:	<div className="content" >
 					              <ul>
-					             { this.renderQuizesResults()  }
-					               
-					               
+					             		{ this.renderQuizesResults()  }
 					              </ul>
 					        </div>
 					}

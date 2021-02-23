@@ -12,13 +12,12 @@ class QuizList extends Component{
   
 		  	renderQuizes(){
 		  		return this.props.quizes.map(quiz=>{
-		  			console.log(quiz);
 		  			return(
 		  					<li
 		  						key={quiz.id}
 		  					>
 		  						<NavLink to={'/quiz/' + quiz.id }>
-		  							{quiz.quizName}
+		  							<span>{quiz.quizName }</span> 
 		  						</NavLink>
 		  					</li>
 		  			)
@@ -27,19 +26,17 @@ class QuizList extends Component{
 
 		  	componentDidMount(){
 		  		this.props.fetchQuizes();
-		   //    	axios.get("https://abzagencytest.firebaseio.com/quizes.json").then(response=>{
-		   //      	console.log("response = ", response);
-		   //    	})
+		 
 		  	}
 
    	render(){
-		console.log(this.props.quizes);
+		//console.log(this.props.quizes);
 		const pageName=(document.URL).toString();
 		let cls = pageName.indexOf('results') == 22 ? "boxed2" : "boxed";
   
   
-      console.log(pageName.indexOf('results'));
-      console.log("cls = ", cls);
+      //console.log(pageName.indexOf('results'));
+      //console.log("cls = ", cls);
 	    return (	      	
 	      		 <div className={cls}>
 					<h2 className="heading">Тести</h2>

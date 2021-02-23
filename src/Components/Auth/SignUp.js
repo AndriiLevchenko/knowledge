@@ -89,7 +89,7 @@ class Auth extends Component{
 				touched: false,
 				validation:{
 					required: true,
-					minLength: 6
+					minLength: 3
 				}
 			},
 			passwordagain:{
@@ -101,7 +101,7 @@ class Auth extends Component{
 				touched: false,
 				validation:{
 					required: true,
-					minLength: 6
+					minLength: 3
 				}
 			}
 		}
@@ -183,7 +183,7 @@ class Auth extends Component{
 						<Button 
 							onClick={this.registerHandler} 
 							value={'Зареєструватись' } 
-							disabled={!this.state.isFormValid}
+						
 						/>
 					</form>
 				</div>
